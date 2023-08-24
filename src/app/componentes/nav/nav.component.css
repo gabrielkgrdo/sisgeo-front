@@ -1,12 +1,10 @@
 .container{
     height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .sidenav{
-    width: 13tem;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    color: black;
+    width: 13rem;
+    color: white;
     background: linear-gradient(210deg, rgba(131,58,180,1) 0%, rgba(29,253,202,1) 50%, rgba(131,58,180,1) 100%);
 }
 
@@ -16,18 +14,16 @@ img{
     margin: .8rem auto 1rem auto;
 }
 
-.sidenav a:hover
-{
-    color: white;
-    background-color: darkgray;
-    transition: 0.5s;
+.sidenav a{
+    color: black;
 }
 
-.sidenav i{
+.sidenav i {
     margin-right: .6rem;
-}
+ }
 
 .menu {
     margin: 1rem 0 0 1rem;
+    color: black;
     background: linear-gradient(210deg, rgba(131,58,180,1) 0%, rgba(29,253,202,1) 50%, rgba(131,58,180,1) 100%);
 }

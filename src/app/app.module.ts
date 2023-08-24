@@ -29,13 +29,15 @@ import {MatCardModule} from '@angular/material/card';
 
 
 import { NavComponent } from './componentes/nav/nav.component';
-import { HomeComponent } from './componetes/home/home.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { HeaderComponent } from './componentes/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
