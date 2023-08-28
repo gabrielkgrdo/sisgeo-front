@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Servidor } from 'src/app/modelos/servidor';
+import { ServidorService } from 'src/app/services/servidor.service';
 
 @Component({
   selector: 'app-lista-servidor',
@@ -10,31 +11,27 @@ import { Servidor } from 'src/app/modelos/servidor';
 })
 export class ListaServidorComponent implements OnInit {
   
-  SERVIDOR_INFO: Servidor [] = [
-    {
-      id: 1,
-      nome: 'Kleyber Gabriel',
-      cpf: '123.456.789-10',
-      email: 'kleyber@mail.com',
-      senha: '1234',
-      perfis: ['0'],
-      dataCriacao: '25/08/2023'
-    }
-  ]
+  SERVIDOR_INFO: Servidor [] = []
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','acoes'];
   dataSource = new MatTableDataSource<Servidor>(this.SERVIDOR_INFO);
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
   
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  constructor(
+    private service: ServidorService
+  ) { }
+
+  ngOnInit(): void {
+    this.findAll();
+  }
+  
+  findAll(){
+    this.service.findAll().subscribe(resposta => {
+      this.SERVIDOR_INFO = resposta
+      this.dataSource = new MatTableDataSource<Servidor>(resposta);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
 }
