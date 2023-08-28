@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Credenciais } from '../modelos/credenciais';
 import { HttpClient } from '@angular/common/http';
-import { api_config } from '../config/api.config';
+import { API_CONFIG } from '../config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -9,13 +9,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AutenticacaoService {
 
-  jtwService: JwtHelperService = new JwtHelperService;
+  jtwService: JwtHelperService = new JwtHelperService();
 
   constructor(private http : HttpClient) { }
 
   autenticacao(credenciais: Credenciais) {
 
-    return this.http.post(`${api_config.baseUrl}/login`, credenciais, {
+    return this.http.post(`${API_CONFIG.baseUrl}/login`, credenciais, {
       observe: 'response',
       responseType: 'text'
     })
@@ -26,10 +26,11 @@ export class AutenticacaoService {
   }
 
   estaAutenticado() {
-    let token = localStorage.getItem('token')
-    if (token != null){
-      return !this.jtwService.isTokenExpired('token')
+    let token = localStorage.getItem('token');
+    if (token != null) {
+      // Passe o valor da variável 'token' para isTokenExpired, não a string 'token'
+      return !this.jtwService.isTokenExpired(token);
     }
-    return false
+    return false;
   }
 }
