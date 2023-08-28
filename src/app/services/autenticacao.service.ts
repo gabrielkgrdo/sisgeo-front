@@ -33,4 +33,8 @@ export class AutenticacaoService {
     }
     return false;
   }
+
+  logout(){
+    localStorage.clear();
+  }
 }
