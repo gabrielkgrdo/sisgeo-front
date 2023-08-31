@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Servidor } from 'src/app/modelos/servidor';
 import { ServidorService } from 'src/app/services/servidor.service';
@@ -28,7 +29,8 @@ export class CriarServidorComponent implements OnInit {
 
   constructor(
     private service: ServidorService,
-    private alert: ToastrService
+    private alert: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,8 +40,17 @@ export class CriarServidorComponent implements OnInit {
   create(): void {
     this.service.create(this.servidor).subscribe(() => {
       this.alert.success('Servidor cadastrado com sucesso', 'Cadastro');
+      this.router.navigate(["servidores"]);
     }, ex => {
-      console.log(ex);
+      if (Array.isArray(ex.error)) {
+        ex.error.forEach(element => {
+          this.alert.error(element.message);
+        });
+      } else if (ex.error && ex.error.message) {
+        this.alert.error(ex.error.message);
+      } else {
+        this.alert.error('Erro desconhecido');
+      }
     })
   }
 
