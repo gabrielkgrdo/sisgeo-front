@@ -20,11 +20,17 @@ h1{
 }
 
 .section {
+    margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 button{
    margin-top: .5rem;
 }
+
+mat-icon{
+    opacity: .8;
+}
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-criar-servidor',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriarServidorComponent implements OnInit {
 
+  nome: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3)]);
+  cpf: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3)]);
+  email: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3)]);
+  senha: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3)]);
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  validaCampos(): boolean{
+    return this.nome.valid && this.cpf.valid
+    && this.email.valid && this.senha.valid
+  }
+
 }
+
