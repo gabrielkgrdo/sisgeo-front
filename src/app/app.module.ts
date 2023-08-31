@@ -35,6 +35,7 @@ import { ListaServidorComponent } from './componentes/servidor/lista-servidor/li
 import { LoginComponent } from './componentes/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { CriarServidorComponent } from './componentes/servidor/criar-servidor/criar-servidor.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
     HomeComponent,
     HeaderComponent,
     ListaServidorComponent,
-    LoginComponent
+    LoginComponent,
+    CriarServidorComponent
   ],
   imports: [
     BrowserModule,
