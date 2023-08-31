@@ -15,4 +15,8 @@ export class ServidorService {
   findAll(): Observable<Servidor[]> {
     return this.http.get<Servidor[]>(`${API_CONFIG.baseUrl}/servidores`);
   }
+
+  create(servidor: Servidor): Observable<Servidor> {
+    return this.http.post<Servidor>(`${API_CONFIG.baseUrl}/servidores`, servidor);
+  }
 }
