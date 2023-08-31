@@ -17,7 +17,7 @@ export class AutenticacaoService {
 
     return this.http.post(`${API_CONFIG.baseUrl}/login`, credenciais, {
       observe: 'response',
-      responseType: 'text'
+      responseType: 'text',
     })
   }
 
@@ -28,7 +28,6 @@ export class AutenticacaoService {
   estaAutenticado() {
     let token = localStorage.getItem('token');
     if (token != null) {
-      // Passe o valor da variável 'token' para isTokenExpired, não a string 'token'
       return !this.jtwService.isTokenExpired(token);
     }
     return false;

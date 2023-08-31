@@ -9,7 +9,7 @@ import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {
-    path: '', component: NavComponent, canActivate: [AutenticacaoGuard], children: [
+    path: '', component: NavComponent, /*canActivate: [AutenticacaoGuard],*/ children: [
       {path: 'home', component: HomeComponent},
       {path: 'servidores', component: ListaServidorComponent}
     ]
