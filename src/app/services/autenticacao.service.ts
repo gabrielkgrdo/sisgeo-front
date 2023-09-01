@@ -18,11 +18,12 @@ export class AutenticacaoService {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, credenciais, {
       observe: 'response',
       responseType: 'text',
-    })
+    });
   }
 
-  loginSucesso(authToken: string) {
-    localStorage.setItem('token', authToken);
+  loginSucesso(token: string) {
+    localStorage.setItem('token', token);
+    console.log('Token armazenado no localStorage:', token);
   }
 
   estaAutenticado() {

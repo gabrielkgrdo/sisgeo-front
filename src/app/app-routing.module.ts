@@ -7,6 +7,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 import { CriarServidorComponent } from './componentes/servidor/criar-servidor/criar-servidor.component';
 import { AtualizarServidorComponent } from './componentes/servidor/atualizar-servidor/atualizar-servidor.component';
+import { DeletarServidorComponent } from './componentes/servidor/deletar-servidor/deletar-servidor.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: 'servidores', component: ListaServidorComponent},
       {path: 'servidores/create', component: CriarServidorComponent},
       {path: 'servidores/update/:id', component: AtualizarServidorComponent},
+      {path: 'servidores/delete/:id', component: DeletarServidorComponent}
     ]
     
   }

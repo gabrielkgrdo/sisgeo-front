@@ -38,6 +38,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { CriarServidorComponent } from './componentes/servidor/criar-servidor/criar-servidor.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { AtualizarServidorComponent } from './componentes/servidor/atualizar-servidor/atualizar-servidor.component';
+import { DeletarServidorComponent } from './componentes/servidor/deletar-servidor/deletar-servidor.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AtualizarServidorComponent } from './componentes/servidor/atualizar-ser
     ListaServidorComponent,
     LoginComponent,
     CriarServidorComponent,
-    AtualizarServidorComponent
+    AtualizarServidorComponent,
+    DeletarServidorComponent
   ],
   imports: [
     BrowserModule,

@@ -29,12 +29,28 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   logar(){
-    this.service.autenticacao(this.credenciais).subscribe(resposta => {
-      this.service.loginSucesso(resposta.headers.get('Authorization').substring(7));
-      this.router.navigate([''])
-    }, () => {
-      this.alert.error('Usuário e/ou senha inválidos');
-    })
+    console.log('Iniciando o processo de login...');
+  
+    this.service.autenticacao(this.credenciais).subscribe(
+      (resposta) => {
+        console.log('Solicitação de autenticação bem-sucedida:', resposta);
+  
+        const authorizationHeader = resposta.headers.get('Authorization');
+        if (authorizationHeader) {
+          const token = authorizationHeader.substring(7);
+          this.service.loginSucesso(token);
+          console.log('Token armazenado no localStorage:', token);
+          this.router.navigate(['home']);
+          console.log('Token de autorização obtido e armazenado com sucesso:', token);
+        } else {
+          this.alert.error('O servidor não retornou um token de autorização.');
+        }
+      },
+      (error) => {
+        console.error('Erro ao fazer a solicitação de autenticação:', error);
+        this.alert.error('Usuário e/ou senha inválidos');
+      }
+    );
   }
 
   validaCampos(): boolean {

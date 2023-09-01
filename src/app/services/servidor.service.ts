@@ -27,4 +27,8 @@ export class ServidorService {
   update(servidor: Servidor): Observable<Servidor> {
     return this.http.put<Servidor>(`${API_CONFIG.baseUrl}/servidores/${servidor.id}`, servidor);
   } 
+
+  delete(id: any): Observable<Servidor> {
+    return this.http.delete<Servidor>(`${API_CONFIG.baseUrl}/servidores/${id}`);
+  }
 }
