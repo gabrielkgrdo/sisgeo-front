@@ -37,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { CriarServidorComponent } from './componentes/servidor/criar-servidor/criar-servidor.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { AtualizarServidorComponent } from './componentes/servidor/atualizar-servidor/atualizar-servidor.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NgxMaskModule } from 'ngx-mask';
     HeaderComponent,
     ListaServidorComponent,
     LoginComponent,
-    CriarServidorComponent
+    CriarServidorComponent,
+    AtualizarServidorComponent
   ],
   imports: [
     BrowserModule,

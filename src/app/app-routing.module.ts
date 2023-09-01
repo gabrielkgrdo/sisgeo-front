@@ -6,6 +6,7 @@ import { ListaServidorComponent } from './componentes/servidor/lista-servidor/li
 import { LoginComponent } from './componentes/login/login.component';
 import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
 import { CriarServidorComponent } from './componentes/servidor/criar-servidor/criar-servidor.component';
+import { AtualizarServidorComponent } from './componentes/servidor/atualizar-servidor/atualizar-servidor.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
     path: '', component: NavComponent, canActivate: [AutenticacaoGuard], children: [
       {path: 'home', component: HomeComponent},
       {path: 'servidores', component: ListaServidorComponent},
-      {path: 'servidores/create', component: CriarServidorComponent}
+      {path: 'servidores/create', component: CriarServidorComponent},
+      {path: 'servidores/update/:id', component: AtualizarServidorComponent},
     ]
     
   }
