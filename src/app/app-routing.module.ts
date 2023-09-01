@@ -10,7 +10,7 @@ import { CriarServidorComponent } from './componentes/servidor/criar-servidor/cr
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {
-    path: '', component: NavComponent, /*canActivate: [AutenticacaoGuard],*/ children: [
+    path: '', component: NavComponent, canActivate: [AutenticacaoGuard], children: [
       {path: 'home', component: HomeComponent},
       {path: 'servidores', component: ListaServidorComponent},
       {path: 'servidores/create', component: CriarServidorComponent}

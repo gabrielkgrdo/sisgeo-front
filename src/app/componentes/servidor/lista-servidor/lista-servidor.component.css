@@ -16,3 +16,11 @@ table {
 mat-form-field{
     width: 30%;
 }
+
+.edit{
+    color: #01A63E;
+}
+
+.delete{
+    color: #D00000;
+}
