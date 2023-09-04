@@ -39,6 +39,10 @@ import { CriarServidorComponent } from './componentes/servidor/criar-servidor/cr
 import { NgxMaskModule } from 'ngx-mask';
 import { AtualizarServidorComponent } from './componentes/servidor/atualizar-servidor/atualizar-servidor.component';
 import { DeletarServidorComponent } from './componentes/servidor/deletar-servidor/deletar-servidor.component';
+import { CriarUsuarioComponent } from './componentes/usuario/criar-usuario/criar-usuario.component';
+import { ListaUsuarioComponent } from './componentes/usuario/lista-usuario/lista-usuario.component';
+import { DeletarUsuarioComponent } from './componentes/usuario/deletar-usuario/deletar-usuario.component';
+import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuario/atualizar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,11 @@ import { DeletarServidorComponent } from './componentes/servidor/deletar-servido
     LoginComponent,
     CriarServidorComponent,
     AtualizarServidorComponent,
-    DeletarServidorComponent
+    DeletarServidorComponent,
+    CriarUsuarioComponent,
+    ListaUsuarioComponent,
+    DeletarUsuarioComponent,
+    AtualizarUsuarioComponent
   ],
   imports: [
     BrowserModule,
