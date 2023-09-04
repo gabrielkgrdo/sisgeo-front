@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Ocorrencia } from 'src/app/modelos/chamado';
+import { OcorrenciaService } from 'src/app/services/ocorrencia.service';
 
 @Component({
   selector: 'app-listar-ocorrencia',
@@ -10,21 +11,8 @@ import { Ocorrencia } from 'src/app/modelos/chamado';
 })
 export class ListarOcorrenciaComponent implements OnInit {
 
-  OCORRENCIA_INFO: Ocorrencia [] = [
-    {
-      id: 1,
-      dataAbertura: '04/09/2023',
-      dataFechamento: '04/09/2023',
-      prioridade: 'ALTA',
-      status: 'Andamento',
-      titulo: 'chamado 1',
-      descricao: 'teste chamado 1',
-      servidor: 1,
-      usuario: 6,
-      nomeUsuario: 'biel sales',
-      nomeServidor: 'kleyber gabriel',
-    }
-  ]
+  OCORRENCIA_INFO: Ocorrencia [] = []
+  FILTRAR_DADOS: Ocorrencia [] = []
 
   displayedColumns: string[] = ['id', 'titulo', 'usuario', 'servidor', 'dataAbertura','prioridade', 'status', 'acoes',];
   dataSource = new MatTableDataSource<Ocorrencia>(this.OCORRENCIA_INFO);
@@ -32,9 +20,21 @@ export class ListarOcorrenciaComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
-  constructor() { }
+  constructor(
+    private service: OcorrenciaService
+  ) { }
 
   ngOnInit(): void {
+    this.findAll();
+  }
+
+  findAll(): void{
+    this.service.findAll().subscribe(resposta => {
+      this.OCORRENCIA_INFO = resposta;
+      this.dataSource.data = resposta;
+      this.dataSource.paginator = this.paginator;
+      
+    })
   }
 
   applyFilter(event: Event) {
@@ -42,4 +42,34 @@ export class ListarOcorrenciaComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  status(status: any): string{
+    if (status == '0') {
+      return 'ABERTO'
+    } else if (status == '1') {
+      return 'EM ANDAMENTO'
+    } else {
+      return 'ENCERRADO'
+    }
+  }
+
+  prioridade(prioridade: any): string{
+    if (prioridade == '0') {
+      return 'BAIXA'
+    } else if (prioridade == '1') {
+      return 'MÉDIA'
+    } else {
+      return 'ALTA'
+    }
+  }
+
+  ordenaStatus(status: any): void {
+    let list: Ocorrencia[] = []
+    this.OCORRENCIA_INFO.forEach(element => {
+      if(element.status == status)
+      list.push(element)
+    });
+    this.FILTRAR_DADOS = list;
+    this.dataSource = new MatTableDataSource<Ocorrencia>(list);
+    this.dataSource.paginator = this.paginator;
+  }
 }

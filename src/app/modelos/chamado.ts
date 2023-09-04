@@ -5,7 +5,7 @@ export interface Ocorrencia {
     prioridade:      string;
     status:          string;
     titulo:          string;
-    descricao:     string;
+    descricaoOcorrencia:     string;
     servidor:            any;
     usuario:            any;
     nomeUsuario:     string;
