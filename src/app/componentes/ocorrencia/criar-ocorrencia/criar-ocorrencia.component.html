@@ -1,0 +1,58 @@
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Gerenciar Ocorrências</h1>
+    <form class="form">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Título da ocorrência</mat-label>
+          <input matInput >
+        </mat-form-field>
+
+        <div class="status-prioridade">
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select>
+                  <mat-option value="0">ABERTO</mat-option>
+                  <mat-option value="1">EM ANDAMENTO</mat-option>
+                  <mat-option value="2">ENCERRADO</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Prioridade</mat-label>
+                <mat-select>
+                  <mat-option value="0">BAIXA</mat-option>
+                  <mat-option value="1">MÉDIA</mat-option>
+                  <mat-option value="2">ENCERRADO</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div class="servidor-Usuario">
+            <mat-form-field appearance="outline">
+                <mat-label>Selecione um servidor</mat-label>
+                <mat-select>
+                  <mat-option value="0">Kleyber</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Selecione um usuário</mat-label>
+                <mat-select>
+                  <mat-option value="0">Biel Sales</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+        </div>
+
+        <div class="desc">
+            <form class="form">
+            
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Descrição</mat-label>
+                  <textarea matInput></textarea>
+                </mat-form-field>
+              </form>
+        </div>
+      
+      </form>
+      
+</div>

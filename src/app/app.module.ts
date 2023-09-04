@@ -44,6 +44,7 @@ import { ListaUsuarioComponent } from './componentes/usuario/lista-usuario/lista
 import { DeletarUsuarioComponent } from './componentes/usuario/deletar-usuario/deletar-usuario.component';
 import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuario/atualizar-usuario.component';
 import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorrencia/listar-ocorrencia.component';
+import { CriarOcorrenciaComponent } from './componentes/ocorrencia/criar-ocorrencia/criar-ocorrencia.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorr
     ListaUsuarioComponent,
     DeletarUsuarioComponent,
     AtualizarUsuarioComponent,
-    ListarOcorrenciaComponent
+    ListarOcorrenciaComponent,
+    CriarOcorrenciaComponent
   ],
   imports: [
     BrowserModule,
