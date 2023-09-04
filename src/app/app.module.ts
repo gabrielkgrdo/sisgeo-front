@@ -43,6 +43,7 @@ import { CriarUsuarioComponent } from './componentes/usuario/criar-usuario/criar
 import { ListaUsuarioComponent } from './componentes/usuario/lista-usuario/lista-usuario.component';
 import { DeletarUsuarioComponent } from './componentes/usuario/deletar-usuario/deletar-usuario.component';
 import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuario/atualizar-usuario.component';
+import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorrencia/listar-ocorrencia.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuar
     CriarUsuarioComponent,
     ListaUsuarioComponent,
     DeletarUsuarioComponent,
-    AtualizarUsuarioComponent
+    AtualizarUsuarioComponent,
+    ListarOcorrenciaComponent
   ],
   imports: [
     BrowserModule,

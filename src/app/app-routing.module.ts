@@ -12,6 +12,7 @@ import { ListaUsuarioComponent } from './componentes/usuario/lista-usuario/lista
 import { CriarUsuarioComponent } from './componentes/usuario/criar-usuario/criar-usuario.component';
 import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuario/atualizar-usuario.component';
 import { DeletarUsuarioComponent } from './componentes/usuario/deletar-usuario/deletar-usuario.component';
+import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorrencia/listar-ocorrencia.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,7 +27,9 @@ const routes: Routes = [
       {path: 'usuarios', component: ListaUsuarioComponent},
       {path: 'usuarios/create', component: CriarUsuarioComponent},
       {path: 'usuarios/update/:id', component: AtualizarUsuarioComponent},
-      {path: 'usuarios/delete/:id', component: DeletarUsuarioComponent}
+      {path: 'usuarios/delete/:id', component: DeletarUsuarioComponent},
+
+      {path: 'ocorrencias', component: ListarOcorrenciaComponent},
     ]
     
   }
