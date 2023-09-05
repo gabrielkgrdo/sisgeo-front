@@ -14,4 +14,8 @@ export class OcorrenciaService {
   findAll(): Observable<Ocorrencia[]> {
     return this.http.get<Ocorrencia[]>(`${API_CONFIG.baseUrl}/ocorrencias`);
   }
+
+  create(ocorrencia: Ocorrencia): Observable<Ocorrencia> {
+    return this.http.post<Ocorrencia>(`${API_CONFIG.baseUrl}/ocorrencias`, ocorrencia);
+  }
 }
