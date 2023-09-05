@@ -14,6 +14,7 @@ import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuar
 import { DeletarUsuarioComponent } from './componentes/usuario/deletar-usuario/deletar-usuario.component';
 import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorrencia/listar-ocorrencia.component';
 import { CriarOcorrenciaComponent } from './componentes/ocorrencia/criar-ocorrencia/criar-ocorrencia.component';
+import { AtualizarOcorrenciaComponent } from './componentes/ocorrencia/atualizar-ocorrencia/atualizar-ocorrencia.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
 
       {path: 'ocorrencias', component: ListarOcorrenciaComponent},
       {path: 'ocorrencias/create', component: CriarOcorrenciaComponent},
+      {path: 'ocorrencias/update/:id', component: AtualizarOcorrenciaComponent},
     ]
     
   }
