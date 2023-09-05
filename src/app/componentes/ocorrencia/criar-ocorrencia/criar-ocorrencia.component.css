@@ -30,3 +30,17 @@ h1{
 .servidor-Usuario mat-form-field{
     width: 49%;
 }
+
+.descricao{
+    min-height: 6rem;
+    max-height: 10rem;
+}
+
+.botoes{
+    text-align: center;
+}
+
+.botao {
+    width: 20%;
+    margin: 10px;
+}
