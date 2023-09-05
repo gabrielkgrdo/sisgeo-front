@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Ocorrencia } from 'src/app/modelos/chamado';
 import { Servidor } from 'src/app/modelos/servidor';
@@ -42,17 +42,28 @@ export class AtualizarOcorrenciaComponent implements OnInit {
     private servicoUsuario: UsuarioService,
     private servicoServidor: ServidorService,
     private alerta: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    this.ocorrencia.id = this.route.snapshot.paramMap.get('id');
+    this.findById();
     this.findAllUsuarios();
     this.findAllServidores();
   }
 
-  create(): void{
+  findById(): void {
+    this.servicoOcorrencia.findById(this.ocorrencia.id).subscribe(resposta => {
+      this.ocorrencia = resposta;
+    }, ex => {
+      this.alerta.error(ex.error.error);
+    })
+  }
+
+  update(): void{
     this.servicoOcorrencia.create(this.ocorrencia).subscribe(resposta => {
-      this.alerta.success('Ocorrencia criada com sucesso!', 'Aviso:');
+      this.alerta.success('Ocorrencia atualizada com sucesso!', 'Aviso:');
       this.router.navigate(['ocorrencias']);
     }, ex => {
       this.alerta.error(ex.error.error);
@@ -74,6 +85,26 @@ export class AtualizarOcorrenciaComponent implements OnInit {
   validaCampos(): boolean {
     return this.titulo.valid && this.prioridade.valid && this.status.valid &&
     this.servidor.valid && this.usuario.valid && this.descricao.valid
+  }
+
+  retornaStatus(status: any): string{
+    if (status == '0') {
+      return 'ABERTO'
+    } else if (status == '1') {
+      return 'EM ANDAMENTO'
+    } else {
+      return 'ENCERRADO'
+    }
+  }
+
+  retornaPrioridade(prioridade: any): string{
+    if (prioridade == '0') {
+      return 'BAIXA'
+    } else if (prioridade == '1') {
+      return 'MÉDIA'
+    } else {
+      return 'ALTA'
+    }
   }
 
 }

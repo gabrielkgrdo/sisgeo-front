@@ -48,7 +48,7 @@
             
                 <mat-form-field class="full-width" appearance="outline">
                   <mat-label>Descrição</mat-label>
-                  <textarea [formControl]="descricao" required class="descricao" matInput></textarea>
+                  <textarea [(ngModel)]="ocorrencia.descricaoOcorrencia" name="descricao" [formControl]="descricao" required class="descricao" matInput></textarea>
                 </mat-form-field>
               </form>
               <div class="botoes">
