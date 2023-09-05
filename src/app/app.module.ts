@@ -46,6 +46,7 @@ import { AtualizarUsuarioComponent } from './componentes/usuario/atualizar-usuar
 import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorrencia/listar-ocorrencia.component';
 import { CriarOcorrenciaComponent } from './componentes/ocorrencia/criar-ocorrencia/criar-ocorrencia.component';
 import { AtualizarOcorrenciaComponent } from './componentes/ocorrencia/atualizar-ocorrencia/atualizar-ocorrencia.component';
+import { LeituraOcorrenciaComponent } from './componentes/ocorrencia/leitura-ocorrencia/leitura-ocorrencia.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AtualizarOcorrenciaComponent } from './componentes/ocorrencia/atualizar
     AtualizarUsuarioComponent,
     ListarOcorrenciaComponent,
     CriarOcorrenciaComponent,
-    AtualizarOcorrenciaComponent
+    AtualizarOcorrenciaComponent,
+    LeituraOcorrenciaComponent
   ],
   imports: [
     BrowserModule,
