@@ -7,17 +7,17 @@
         Home
       </a>
 
-      <a mat-list-item routerLink="servidores">
+      <a mat-list-item routerLink="servidores" >
         <i class="material-icons">account_circle</i>
         Servidores
       </a>
 
-      <a mat-list-item routerLink="usuarios">
+      <a mat-list-item routerLink="usuarios" >
         <i class="material-icons">person</i>
         Usuários
       </a>
 
-      <a mat-list-item routerLink="ocorrencias">
+      <a mat-list-item routerLink="ocorrencias" *ngIf="autenticacaoServico.isUserAdmin()"> 
         <i class="material-icons">gpp_maybe</i>
         Ocorrências
       </a>

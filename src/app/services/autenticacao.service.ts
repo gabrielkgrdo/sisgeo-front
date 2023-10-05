@@ -34,6 +34,25 @@ export class AutenticacaoService {
     return false;
   }
 
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isUserAdmin(): boolean {
+    const token = this.getToken();
+
+    if (token) {
+      const decodedToken = this.jtwService.decodeToken(token);
+      const roles = decodedToken.roles; // Suponha que as roles estejam armazenadas na propriedade 'roles' do token
+
+      if (Array.isArray(roles)) {
+        return roles.some(role => role.authority === 'ROLE_ADMIN');
+      }
+    }
+
+    return false;
+  }
+
   logout(){
     localStorage.clear();
   }

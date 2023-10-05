@@ -10,14 +10,16 @@ import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 })
 export class NavComponent implements OnInit {
 
+
   constructor(
     private router: Router,
-    private autenticacaoServico: AutenticacaoService,
+    public autenticacaoServico: AutenticacaoService,
     private alertLogout: ToastrService
     ) { }
 
   ngOnInit(): void {
     this.router.navigate(['home'])
+
   }
 
   logout() {
