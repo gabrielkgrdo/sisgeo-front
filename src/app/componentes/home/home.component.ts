@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 
 
 @Component({
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  currentUserNome: string | null;
 
-  constructor() { }
+  constructor(public autenticacaoServico: AutenticacaoService) { 
+    this.currentUserNome = '';
+  }
 
   ngOnInit(): void {
+    this.currentUserNome = this.autenticacaoServico.getNomeUsuario();
   }
 
 }

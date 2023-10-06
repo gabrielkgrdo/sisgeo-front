@@ -24,6 +24,17 @@ export class AutenticacaoService {
     });
   }
 
+  getNomeUsuario(): string {
+    const token = this.getToken();
+
+    if (token) {
+      const decodedToken = this.jtwService.decodeToken(token);
+      return decodedToken.nome; // Altere para corresponder à chave do nome no payload do seu token
+    }
+
+    return ''; // Retorne um valor padrão caso o token não esteja presente
+  }
+
   loginSucesso(token: string) {
     localStorage.setItem('token', token);
     // console.log('Token armazenado no localStorage:', token);
