@@ -13,13 +13,22 @@ export class AutenticacaoGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    let autenticado = this.autenticacaoService.estaAutenticado();
+      if (this.autenticacaoService.isTokenExpired()) {
+        // Armazena a URL antes do redirecionamento para o login
+        this.autenticacaoService.setRedirectUrl(state.url);
+        // Token expirado, redirecione para a página de login
+        this.router.navigate(['login']);
+        return false;
+      }
+      if (this.autenticacaoService.estaAutenticado()) {
+        return true; // O usuário está autenticado, permita o acesso à rota
+      }
 
-    if(autenticado){
-      return true
-    }
-    this.router.navigate(['login']);
-    return false
+      // Caso contrário, redirecione para a página de login
+      this.autenticacaoService.setRedirectUrl(state.url); // Armazena a URL de redirecionamento
+      this.router.navigate(['login']);
+      return false;
+    
   }
   
 }

@@ -3,15 +3,18 @@ import { Credenciais } from '../modelos/credenciais';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacaoService {
+  private redirectUrl: string | null = null;
+  private currentUserEmail: string | null = null;
 
   jtwService: JwtHelperService = new JwtHelperService();
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private router: Router) { }
 
   autenticacao(credenciais: Credenciais) {
 
@@ -23,7 +26,7 @@ export class AutenticacaoService {
 
   loginSucesso(token: string) {
     localStorage.setItem('token', token);
-    console.log('Token armazenado no localStorage:', token);
+    // console.log('Token armazenado no localStorage:', token);
   }
 
   estaAutenticado() {
@@ -32,6 +35,16 @@ export class AutenticacaoService {
       return !this.jtwService.isTokenExpired(token);
     }
     return false;
+  }
+
+  isTokenExpired(): boolean {
+    const token = this.getToken();
+
+    if (token) {
+      return this.jtwService.isTokenExpired(token); 
+    }
+
+    return true; // O token expirou ou não existe
   }
 
   getToken(): string | null {
@@ -51,6 +64,33 @@ export class AutenticacaoService {
     }
 
     return false;
+  }
+
+  setLoggedInUserEmail(email: string): void {
+    localStorage.setItem('loggedInUserEmail', email);
+  }
+
+  getLoggedInUserEmail(): string | null {
+    return localStorage.getItem('loggedInUserEmail');
+  }
+  
+  clearRedirectUrl(): void {
+    this.redirectUrl = null;
+  }
+
+  setCurrentUserEmail(email: string | null): void {
+    this.currentUserEmail = email;
+  }
+  
+
+  setRedirectUrl(url: string): void {
+    this.redirectUrl = url;
+    console.log('URL de redirecionamento definida:', url); // Adicione este console.log
+  }
+
+  getRedirectUrl(): string {
+    console.log('Obtendo URL de redirecionamento:', this.redirectUrl); // Adicione este console.log
+    return this.redirectUrl;
   }
 
   logout(){

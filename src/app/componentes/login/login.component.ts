@@ -28,8 +28,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  logar(){
+  logar() {
     console.log('Iniciando o processo de login...');
+    
+    // Obtém a URL desejada para redirecionamento
+    const redirectUrl = this.service.getRedirectUrl();
+  
+    // Limpa a URL de redirecionamento antes de fazer o login
+    this.service.clearRedirectUrl();
   
     this.service.autenticacao(this.credenciais).subscribe(
       (resposta) => {
@@ -40,7 +46,28 @@ export class LoginComponent implements OnInit {
           const token = authorizationHeader.substring(7);
           this.service.loginSucesso(token);
           console.log('Token armazenado no localStorage:', token);
-          this.router.navigate(['home']);
+  
+          // Decodifique o token
+          const decodedToken = this.service.jtwService.decodeToken(token);
+  
+          // Verifique se o token possui uma propriedade 'sub' (email do usuário)
+          if (decodedToken && decodedToken.sub) {
+            // Define o email do usuário atual
+            this.service.setCurrentUserEmail(decodedToken.sub);
+          } else {
+            console.error('Token não possui uma propriedade "sub".');
+          }
+  
+          if (redirectUrl) {
+            console.log('Redirecionando o usuário para a URL de redirecionamento:', redirectUrl);
+            // Redireciona o usuário para a URL de redirecionamento
+            this.router.navigateByUrl(redirectUrl);
+          } else {
+            console.log('Nenhuma URL de redirecionamento encontrada, indo para a página "home".');
+            // Caso não haja URL de redirecionamento, vá para a página 'home'
+            this.router.navigateByUrl('/home');
+          }
+  
           console.log('Token de autorização obtido e armazenado com sucesso:', token);
         } else {
           this.alert.error('O servidor não retornou um token de autorização.');
@@ -52,6 +79,10 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  
+  
+  
+  
 
   validaCampos(): boolean {
     return this.email.valid && this.senha.valid
