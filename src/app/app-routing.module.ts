@@ -16,9 +16,11 @@ import { ListarOcorrenciaComponent } from './componentes/ocorrencia/listar-ocorr
 import { CriarOcorrenciaComponent } from './componentes/ocorrencia/criar-ocorrencia/criar-ocorrencia.component';
 import { AtualizarOcorrenciaComponent } from './componentes/ocorrencia/atualizar-ocorrencia/atualizar-ocorrencia.component';
 import { LeituraOcorrenciaComponent } from './componentes/ocorrencia/leitura-ocorrencia/leitura-ocorrencia.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {
     path: '', component: NavComponent, canActivate: [AutenticacaoGuard], children: [
       {path: 'home', component: HomeComponent},
