@@ -3,6 +3,7 @@
     <mat-card-title>Bem vindo, {{currentUserNome}}!</mat-card-title>
     <mat-card-subtitle>Selecione uma opção para registrar sua ocorrência</mat-card-subtitle>
   </mat-card-header>
+
   <mat-card-content>
     <mat-card class="card-ocorrencia">
       <mat-card-header>
@@ -63,10 +64,83 @@
         <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
       </mat-card-actions>
     </mat-card>
+
+    <mat-card class="card-ocorrencia">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="img-ocorrencia" mat-card-image src="assets/img/assalto.jpg" alt="Homem assaltando carro com arma">
+      <mat-card-content>
+        <mat-card-title class="texto-menor" style="margin-top: 1rem;">Ameaça</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card-ocorrencia">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="img-ocorrencia" mat-card-image src="assets/img/assalto.jpg" alt="Homem assaltando carro com arma">
+      <mat-card-content>
+        <mat-card-title class="texto-menor" style="margin-top: 1rem;">Desaparecimento de Pessoa</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card-ocorrencia">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="img-ocorrencia" mat-card-image src="assets/img/assalto.jpg" alt="Homem assaltando carro com arma">
+      <mat-card-content>
+        <mat-card-title class="texto-menor" style="margin-top: 1rem;">Estelionato, Fraudes ou Apropiações</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card-ocorrencia">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="img-ocorrencia" mat-card-image src="assets/img/assalto.jpg" alt="Homem assaltando carro com arma">
+      <mat-card-content>
+        <mat-card-title class="texto-menor" style="margin-top: 1rem;">Lesão Corporal</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card-ocorrencia">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="img-ocorrencia" mat-card-image src="assets/img/assalto.jpg" alt="Homem assaltando carro com arma">
+      <mat-card-content>
+        <mat-card-title class="texto-menor" style="margin-top: 1rem;">Ofenças Raciais</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card-ocorrencia">
+      <mat-card-header>
+      </mat-card-header>
+      <img class="img-ocorrencia" mat-card-image src="assets/img/assalto.jpg" alt="Homem assaltando carro com arma">
+      <mat-card-content>
+        <mat-card-title class="texto-menor" style="margin-top: 1rem;">Pertubação</mat-card-title>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="registrar-ocorrencia-button">Registrar Ocorrência</button>
+      </mat-card-actions>
+    </mat-card>
     
     
   </mat-card-content>
 </mat-card>
+
 
 <mat-card class="card mat-elevation-z8" *ngIf="autenticacaoServico.isUserAdmin()">
   <mat-card-header>
