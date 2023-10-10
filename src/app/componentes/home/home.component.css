@@ -41,12 +41,16 @@
   min-height: 20rem; /* Altura mínima desejada */
   max-height: 20rem; /* Altura máxima desejada */
   text-align: center;
+<<<<<<< HEAD
   transition: box-shadow 0.3s;
   
 }
 
 .card-ocorrencia:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.671); /* Sombra quando o mouse passa por cima */
+=======
+  
+>>>>>>> 997ea8cee2f9309616a9cb1cb76e5a19cfa9817c
 }
 
  .img-ocorrencia {
