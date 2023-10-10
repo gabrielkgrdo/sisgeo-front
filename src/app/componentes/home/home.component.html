@@ -3,6 +3,7 @@
     <mat-card-title>Bem vindo, {{currentUserNome}}!</mat-card-title>
     <mat-card-subtitle>Selecione uma opção para registrar sua ocorrência</mat-card-subtitle>
   </mat-card-header>
+
   <mat-card-content>
     <mat-card class="card-ocorrencia">
       <mat-card-header>
@@ -67,6 +68,7 @@
     
   </mat-card-content>
 </mat-card>
+
 
 <mat-card class="card mat-elevation-z8" *ngIf="autenticacaoServico.isUserAdmin()">
   <mat-card-header>

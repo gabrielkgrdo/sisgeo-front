@@ -1,9 +1,13 @@
 .card {
-    width: 90%;
-    height: auto;
-    margin: 1rem auto;
-    background-color: rgb(235, 235, 235);
+  width: 90%;
+  height: auto;
+  margin: 1rem auto;
+  background-color: rgb(235, 235, 235);
  }
+
+ .first-card-content {
+  margin-top: 8px; /* Ajuste a margem superior conforme necessário */
+}
 
 .texto-menor {
    font-size: 20px; /* Tamanho da fonte desejado */
@@ -23,28 +27,30 @@
  
 
  .mat-card-content {
-   display: flex; /* Torna os elementos filhos flexíveis */
-   justify-content: space-between; /* Distribui os elementos filhos uniformemente */
-   flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); /* Usar fr para distribuir o espaço igualmente */
+  grid-gap: 1rem; /* Espaçamento entre os cartões */
+   
    
  }
 
  .card-ocorrencia{
-   width: 17rem;
-   height: 20rem;
-   min-width: 15rem;
-   margin: 0.5rem;
-   text-align: center; /* Para centralizar conteúdo verticalmente */
-   padding: 1rem; /* Adicione algum preenchimento para espaçamento interno */
+  min-height: 20rem; /* Altura mínima desejada */
+  max-height: 20rem; /* Altura máxima desejada */
+  text-align: center;
+  
 }
 
  .img-ocorrencia {
-   max-width: 100%; /* Garante que a imagem não exceda a largura do card */
+   width: 100%; /* Garante que a imagem não exceda a largura do card */
    height: 13rem; /* Mantém a proporção da imagem */
    margin: auto; /* Centraliza a imagem vertical e horizontalmente */
  }
 
- ////////////////////////////////////
+/* //////////////////////////////////////////////////////////////// */
 
 .imgAdmin {
    height: 30rem;
