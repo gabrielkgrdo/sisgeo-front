@@ -39,4 +39,17 @@ export class ListaUsuarioComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  // Função para remover a máscara do CPF
+  removeMascaraCpf(cpfComMascara: string): string {
+    return cpfComMascara.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+  }
+
+  formatarCpf(cpf: string): string {
+    const cpfSemMascara = this.removeMascaraCpf(cpf);
+    // Adicione a máscara (###.###.###-##)
+    return cpfSemMascara.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+ }
+ 
+
+
 }
