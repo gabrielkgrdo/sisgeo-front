@@ -10,66 +10,67 @@ import { OcorrenciaService } from 'src/app/services/ocorrencia.service';
   styleUrls: ['./listar-ocorrencia.component.css']
 })
 export class ListarOcorrenciaComponent implements OnInit {
+  OCORRENCIA_INFO: Ocorrencia[] = [];
+  FILTRAR_DADOS: Ocorrencia[] = [];
+  selectedStatus: string = '';
 
-  OCORRENCIA_INFO: Ocorrencia [] = []
-  FILTRAR_DADOS: Ocorrencia [] = []
+  displayedColumns: string[] = ['id', 'titulo', 'usuario', 'servidor', 'dataAbertura', 'prioridade', 'status', 'acoes'];
+  dataSource: MatTableDataSource<Ocorrencia>;
 
-  displayedColumns: string[] = ['id', 'titulo', 'usuario', 'servidor', 'dataAbertura','prioridade', 'status', 'acoes',];
-  dataSource = new MatTableDataSource<Ocorrencia>(this.OCORRENCIA_INFO);
-  
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-
-  constructor(
-    private service: OcorrenciaService
-  ) { }
+  constructor(private service: OcorrenciaService) {}
 
   ngOnInit(): void {
     this.findAll();
   }
 
-  findAll(): void{
-    this.service.findAll().subscribe(resposta => {
+  findAll(): void {
+    this.service.findAll().subscribe((resposta) => {
       this.OCORRENCIA_INFO = resposta;
-      this.dataSource.data = resposta;
+      this.FILTRAR_DADOS = resposta; // Inicializa FILTRAR_DADOS com a mesma lista no início
+      console.log('Ocorrências filtradas:', this.FILTRAR_DADOS);
+      this.dataSource = new MatTableDataSource<Ocorrencia>(this.OCORRENCIA_INFO);
       this.dataSource.paginator = this.paginator;
-      
-    })
+    });
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
-  status(status: any): string{
-    if (status == '0') {
-      return 'ABERTO'
-    } else if (status == '1') {
-      return 'EM ANDAMENTO'
-    } else {
-      return 'ENCERRADO'
+  status(status: string): string {
+    switch (status) {
+      case '0':
+        return 'ABERTO';
+      case '1':
+        return 'EM ANDAMENTO';
+      default:
+        return 'ENCERRADO';
     }
   }
 
-  prioridade(prioridade: any): string{
-    if (prioridade == '0') {
-      return 'BAIXA'
-    } else if (prioridade == '1') {
-      return 'MÉDIA'
+  ordenaStatus(status: string): void {
+    console.log('Filtrando por status:', status);
+  
+    if (status === this.selectedStatus) {
+      this.selectedStatus = ''; // Desmarca o botão se ele já estiver selecionado
     } else {
-      return 'ALTA'
+      this.selectedStatus = status;
     }
-  }
-
-  ordenaStatus(status: any): void {
-    let list: Ocorrencia[] = []
-    this.OCORRENCIA_INFO.forEach(element => {
-      if(element.status == status)
-      list.push(element)
-    });
-    this.FILTRAR_DADOS = list;
-    this.dataSource = new MatTableDataSource<Ocorrencia>(list);
+  
+    if (this.selectedStatus === '') {
+      // Se não houver um status selecionado, exiba todos os dados
+      this.FILTRAR_DADOS = this.OCORRENCIA_INFO;
+    } else {
+      this.FILTRAR_DADOS = this.OCORRENCIA_INFO.filter((element) => element.status === status);
+    }
+  
+    console.log('Ocorrências filtradas:', this.FILTRAR_DADOS);
+    this.dataSource = new MatTableDataSource<Ocorrencia>(this.FILTRAR_DADOS);
     this.dataSource.paginator = this.paginator;
   }
+  
+  
 }

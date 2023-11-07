@@ -21,7 +21,7 @@ export class AtualizarOcorrenciaComponent implements OnInit {
     status: '',
     titulo: '',
     descricaoOcorrencia: '',
-    servidor: '',
+    servidor: null,
     usuario: '',
     nomeUsuario: '',
     nomeServidor: '',
@@ -56,19 +56,52 @@ export class AtualizarOcorrenciaComponent implements OnInit {
   findById(): void {
     this.servicoOcorrencia.findById(this.ocorrencia.id).subscribe(resposta => {
       this.ocorrencia = resposta;
+      console.log('Resposta do findById:', resposta);
     }, ex => {
       this.alerta.error(ex.error.error);
+      console.error('Erro no findById:', ex);
     })
   }
 
-  update(): void{
-    this.servicoOcorrencia.create(this.ocorrencia).subscribe(resposta => {
-      this.alerta.success('Ocorrencia atualizada com sucesso!', 'Aviso:');
-      this.router.navigate(['ocorrencias']);
-    }, ex => {
-      this.alerta.error(ex.error.error);
-    })
+  logServidorSelection() {
+    console.log('Servidor selecionado:', this.ocorrencia.servidor.id);
   }
+
+  logStatusSelection() {
+    console.log('Status selecionado:', this.ocorrencia.status);
+  }
+  
+  logPrioridadeSelection() {
+    console.log('Prioridade selecionada:', this.ocorrencia.prioridade);
+  }
+  
+  
+  
+
+  update(): void {
+    const data = {
+      servidor: { id: this.ocorrencia.servidor.id },
+      status: this.ocorrencia.status,
+      prioridade: this.ocorrencia.prioridade.toString(),
+    };
+  
+    this.ocorrencia.servidor = data.servidor as Partial<Servidor>; // Convertemos para Partial<Servidor>
+  
+    this.servicoOcorrencia.update(this.ocorrencia).subscribe(
+      (resposta) => {
+        this.alerta.success('Ocorrência atualizada com sucesso!', 'Aviso:');
+        this.router.navigate(['ocorrencias']);
+      },
+      (ex) => {
+        this.alerta.error(ex.error.error);
+      }
+    );
+  }
+  
+  
+  
+  
+  
 
   findAllUsuarios(): void{
     this.servicoUsuario.findAll().subscribe(resposta => {
@@ -83,29 +116,30 @@ export class AtualizarOcorrenciaComponent implements OnInit {
   }  
 
   validaCampos(): boolean {
-    return this.titulo.valid && this.prioridade.valid && this.status.valid &&
-    this.servidor.valid && this.usuario.valid && this.descricao.valid
+    return this.prioridade.valid && this.status.valid &&
+    this.servidor.valid 
   }
 
-  retornaStatus(status: any): string{
-    if (status == '0') {
-      return 'ABERTO'
-    } else if (status == '1') {
-      return 'EM ANDAMENTO'
+  retornaStatus(status: any): number {
+    if (status === 'ABERTO') {
+      return 0;
+    } else if (status === 'EM ANDAMENTO') {
+      return 1;
     } else {
-      return 'ENCERRADO'
+      return 2;
     }
   }
-
-  retornaPrioridade(prioridade: any): string{
-    if (prioridade == '0') {
-      return 'BAIXA'
-    } else if (prioridade == '1') {
-      return 'MÉDIA'
+  
+  retornaPrioridade(prioridade: any): number {
+    if (prioridade === 'BAIXA') {
+      return 0;
+    } else if (prioridade === 'MÉDIA') {
+      return 1;
     } else {
-      return 'ALTA'
+      return 2;
     }
   }
+  
 
 }
 

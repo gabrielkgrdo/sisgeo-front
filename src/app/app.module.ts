@@ -48,6 +48,7 @@ import { CriarOcorrenciaComponent } from './componentes/ocorrencia/criar-ocorren
 import { AtualizarOcorrenciaComponent } from './componentes/ocorrencia/atualizar-ocorrencia/atualizar-ocorrencia.component';
 import { LeituraOcorrenciaComponent } from './componentes/ocorrencia/leitura-ocorrencia/leitura-ocorrencia.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { MariaDaPenhaComponent } from './componentes/maria-da-penha/maria-da-penha.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { RegistroComponent } from './componentes/registro/registro.component';
     CriarOcorrenciaComponent,
     AtualizarOcorrenciaComponent,
     LeituraOcorrenciaComponent,
-    RegistroComponent
+    RegistroComponent,
+    MariaDaPenhaComponent
   ],
   imports: [
     BrowserModule,

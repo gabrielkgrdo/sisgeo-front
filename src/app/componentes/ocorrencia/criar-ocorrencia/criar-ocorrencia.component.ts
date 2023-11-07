@@ -21,7 +21,7 @@ export class CriarOcorrenciaComponent implements OnInit {
     status: '',
     titulo: '',
     descricaoOcorrencia: '',
-    servidor: '',
+    servidor: null,
     usuario: '',
     nomeUsuario: '',
     nomeServidor: '',
