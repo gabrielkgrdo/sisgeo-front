@@ -6,6 +6,7 @@ import { MeioEmpregadoService } from 'src/app/services/meio-empregado.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AutenticacaoService } from 'src/app/services/autenticacao.service';
 
 import * as moment from 'moment';
 
@@ -33,6 +34,7 @@ export class MariaDaPenhaComponent implements OnInit {
   quadra: string;
   complemento: string;
   descricao: string;
+  idUsuario: number;
 
 
   constructor(private http: HttpClient,
@@ -41,7 +43,8 @@ export class MariaDaPenhaComponent implements OnInit {
     private meioEmpregadoService: MeioEmpregadoService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private servicoAutenticacao: AutenticacaoService
   ) { }
 
   ngOnInit() {
@@ -68,6 +71,7 @@ export class MariaDaPenhaComponent implements OnInit {
       tipoLocalSelecionado: new FormControl(),
       // ... Outros campos de formulário
     });
+    // this.idUsuario = this.servicoAutenticacao.getUsuarioId();
 
   }
 
@@ -132,7 +136,8 @@ export class MariaDaPenhaComponent implements OnInit {
       tipoLocalCriminal: {
         id: this.tipoLocalSelecionado
       },
-      meioEmpregadoIds: this.meiosEmpregadosSelecionados
+      meioEmpregadoIds: this.meiosEmpregadosSelecionados,
+      usuario: {id: Number(this.servicoAutenticacao.getUsuarioId())}
     
       // Adicione outros campos de formulário, se necessário
     };

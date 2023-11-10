@@ -5,7 +5,7 @@
 
         <div class="status-prioridade">
             <mat-form-field appearance="outline">
-                <mat-label>STATUS ({{retornaStatus(ocorrencia.status)}})</mat-label>
+                <mat-label>STATUS</mat-label>
                 <mat-select [(ngModel)]="ocorrencia.status" name="status" [formControl]="status" required>
                   <mat-option (click)="logStatusSelection()" value=0>ABERTO</mat-option>
                   <mat-option (click)="logStatusSelection()" value=1>EM ANDAMENTO</mat-option>
@@ -14,7 +14,7 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>PRIORIDADE ({{retornaPrioridade(ocorrencia.prioridade)}})</mat-label>
+                <mat-label>PRIORIDADE</mat-label>
                 <mat-select [(ngModel)]="ocorrencia.prioridade" name="prioridade" [formControl]="prioridade" required>
                   <mat-option (click)="logPrioridadeSelection()" value=0>BAIXA</mat-option>
                   <mat-option (click)="logPrioridadeSelection()" value=1>MÉDIA</mat-option>
@@ -25,7 +25,7 @@
 
         <div class="servidor-Usuario">
           <mat-form-field appearance="outline">
-            <mat-label>SERVIDOR ({{ ocorrencia.servidor?.nome }})</mat-label>
+            <mat-label>SERVIDOR</mat-label>
             <mat-select [(ngModel)]="ocorrencia.servidor" name="servidor" [formControl]="servidor" (selectionChange)="logServidorSelection()" required>
               <mat-option *ngFor="let servidor of servidores" [value]="servidor">{{ servidor.nome }}</mat-option>
             </mat-select>

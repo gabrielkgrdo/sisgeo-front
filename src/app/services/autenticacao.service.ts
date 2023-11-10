@@ -35,6 +35,17 @@ export class AutenticacaoService {
     return ''; // Retorne um valor padrão caso o token não esteja presente
   }
 
+  getUsuarioId(): number | null {
+    const token = this.getToken();
+
+    if (token) {
+      const decodedToken = this.jtwService.decodeToken(token);
+      return decodedToken.id_usuario; // Altere para corresponder à chave do ID do usuário no payload do seu token
+    }
+
+    return null; // Retorne um valor padrão caso o token não esteja presente
+  }
+
   loginSucesso(token: string) {
     localStorage.setItem('token', token);
     // console.log('Token armazenado no localStorage:', token);
