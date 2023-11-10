@@ -1,0 +1,50 @@
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Atualizar Ocorrência</h1>
+    <form class="form">
+        
+
+        <div class="status-prioridade">
+            <mat-form-field appearance="outline">
+                <mat-label>STATUS</mat-label>
+                <mat-select [(ngModel)]="ocorrencia.status" name="status" [formControl]="status" required>
+                  <mat-option (click)="logStatusSelection()" value=0>ABERTO</mat-option>
+                  <mat-option (click)="logStatusSelection()" value=1>EM ANDAMENTO</mat-option>
+                  <mat-option (click)="logStatusSelection()" value=2>ENCERRADO</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>PRIORIDADE</mat-label>
+                <mat-select [(ngModel)]="ocorrencia.prioridade" name="prioridade" [formControl]="prioridade" required>
+                  <mat-option (click)="logPrioridadeSelection()" value=0>BAIXA</mat-option>
+                  <mat-option (click)="logPrioridadeSelection()" value=1>MÉDIA</mat-option>
+                  <mat-option (click)="logPrioridadeSelection()" value=2>ALTA</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div class="servidor-Usuario">
+          <mat-form-field appearance="outline">
+            <mat-label>SERVIDOR</mat-label>
+            <mat-select [(ngModel)]="ocorrencia.servidor" name="servidor" [formControl]="servidor" (selectionChange)="logServidorSelection()" required>
+              <mat-option *ngFor="let servidor of servidores" [value]="servidor">{{ servidor.nome }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+          
+
+              
+
+
+        <div class="desc">
+            
+              <div class="botoes">
+              <button (click)="update()" [disabled]="!validaCampos()" class="botao mat-elevation-z4" mat-raised-button color="primary">Atualizar</button>
+              <button routerLink="../../" class="botao mat-elevation-z4" mat-raised-button color="warn">Cancelar</button>
+              </div>
+        </div>
+      
+      </form>
+      
+</div>
