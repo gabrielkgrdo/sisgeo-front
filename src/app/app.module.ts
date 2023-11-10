@@ -50,6 +50,16 @@ import { LeituraOcorrenciaComponent } from './componentes/ocorrencia/leitura-oco
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { MariaDaPenhaComponent } from './componentes/maria-da-penha/maria-da-penha.component';
 import { DatePipe } from '@angular/common';
+import { MausTratosComponent } from './componentes/maus-tratos/maus-tratos.component';
+import { AcidenteTransitoComponent } from './componentes/acidente-transito/acidente-transito.component';
+import { FurtoComponent } from './componentes/furto/furto.component';
+import { RouboComponent } from './componentes/roubo/roubo.component';
+import { AmeacaComponent } from './componentes/ameaca/ameaca.component';
+import { DesaparecimentoPessoaComponent } from './componentes/desaparecimento-pessoa/desaparecimento-pessoa.component';
+import { EstelionatoFraudesComponent } from './componentes/estelionato-fraudes/estelionato-fraudes.component';
+import { LesaoCorporalComponent } from './componentes/lesao-corporal/lesao-corporal.component';
+import { OfensasRaciaisComponent } from './componentes/ofensas-raciais/ofensas-raciais.component';
+import { PertubacaoComponent } from './componentes/pertubacao/pertubacao.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +81,17 @@ import { DatePipe } from '@angular/common';
     AtualizarOcorrenciaComponent,
     LeituraOcorrenciaComponent,
     RegistroComponent,
-    MariaDaPenhaComponent
+    MariaDaPenhaComponent,
+    MausTratosComponent,
+    AcidenteTransitoComponent,
+    FurtoComponent,
+    RouboComponent,
+    AmeacaComponent,
+    DesaparecimentoPessoaComponent,
+    EstelionatoFraudesComponent,
+    LesaoCorporalComponent,
+    OfensasRaciaisComponent,
+    PertubacaoComponent
   ],
   imports: [
     BrowserModule,

@@ -62,7 +62,7 @@ export class ListarOcorrenciaComponent implements OnInit {
       case '0':
         return 'ABERTO';
       case '1':
-        return 'EM ANDAMENTO';
+        return 'ANDAMENTO';
       default:
         return 'ENCERRADO';
     }

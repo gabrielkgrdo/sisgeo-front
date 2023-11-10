@@ -7,16 +7,16 @@
       <button routerLink="create" class="mat-elevation-z8" mat-stroked-button color="primary">Nova ocorrência</button> 
     </div> -->
   
-    <mat-form-field appearance="standard">
+    <!-- <mat-form-field appearance="standard">
       <mat-label>Filtrar</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <div class="container">
     <section>
       <mat-checkbox color="primary" (click)="ordenaStatus('')" value="">TODOS</mat-checkbox>
       <mat-checkbox color="primary" (click)="ordenaStatus('ABERTO')" value="0" >ABERTO</mat-checkbox>
-      <mat-checkbox color="primary" (click)="ordenaStatus('EM ANDAMENTO')" value="1">EM ANDAMENTO</mat-checkbox>
+      <mat-checkbox color="primary" (click)="ordenaStatus('ANDAMENTO')" value="1">EM ANDAMENTO</mat-checkbox>
       <mat-checkbox color="primary" (click)="ordenaStatus('ENCERRADO')" value="2">ENCERRADO</mat-checkbox>
       
     </section>

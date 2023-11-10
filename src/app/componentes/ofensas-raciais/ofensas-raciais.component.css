@@ -1,0 +1,59 @@
+.container{
+  width: 60%;
+  margin: 0.5rem 20rem 5rem 20rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  
+}
+
+.checkbox-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Define o espaçamento horizontal entre os mat-checkbox */
+  justify-content: space-between; /* Distribui igualmente o espaço entre os mat-checkbox */
+}
+
+.mat-checkbox {
+  flex: 1; /* Permite que os mat-checkbox ocupem todo o espaço disponível */
+  max-width: calc(33.33% - 10px); /* Define a largura máxima para garantir um espaçamento igual */
+  box-sizing: border-box; /* Inclui margens e bordas no cálculo de largura */
+}
+.full-width{
+  width: 100%;
+}
+
+h1{
+  text-align: center;
+}
+
+.status-prioridade{
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-prioridade mat-form-field{
+  width: 49%;
+}
+
+.servidor-Usuario{
+  display: flex;
+  justify-content: space-between;
+}
+
+.servidor-Usuario mat-form-field{
+  width: 49%;
+}
+
+.descricao{
+  min-height: 6rem;
+  max-height: 10rem;
+}
+
+.botoes{
+  text-align: center;
+}
+
+.botao {
+  width: 20%;
+  margin: 10px;
+}

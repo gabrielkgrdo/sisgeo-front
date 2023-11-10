@@ -1,0 +1,182 @@
+<div class="container mat-elevation-z8">
+  <h1 class="full-width">Maus-tratos aos animais</h1>
+    <div class="status-prioridade">
+      <mat-form-field appearance="outline">
+      <mat-label>Data de Início:</mat-label>
+      <input matInput type="date" [(ngModel)]="dataInicio" name="dataInicio" />
+    </mat-form-field>
+      <mat-form-field appearance="outline">
+      <mat-label>Hora de Início:</mat-label>
+      <input matInput type="time" [(ngModel)]="horaInicio" name="horaInicio" />
+      </mat-form-field>
+    </div>
+  
+    <div class="status-prioridade">
+      <mat-form-field appearance="outline">
+      <mat-label>Data de Término:</mat-label>
+      <input matInput type="date" [(ngModel)]="dataFim" name="dataFim" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+      <mat-label>Hora de Término:</mat-label>
+      <input matInput type="time" [(ngModel)]="horaFim" name="horaFim" />
+      </mat-form-field>
+    </div>
+     
+    <div class="status-prioridade">
+      <mat-form-field appearance="outline">
+        <mat-label>UF</mat-label>
+        <mat-select [(value)]="selectedUF" disabled>
+          <mat-option value="DF">DF</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+  
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label for="cidadeSelect">Selecione a cidade:</mat-label>
+      <mat-select
+        id="cidadeSelect"
+        [(ngModel)]="cidadeSelecionada"
+        (ngModelChange)="cidadeSelecionadaChange()"
+      >
+        <mat-option *ngFor="let cidade of cidades" [value]="cidade.id">{{
+          cidade.nome
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label for="setorSelect">Selecione o setor:</mat-label>
+      <mat-select id="setorSelect" [(ngModel)]="setorSelecionado">
+        <mat-option *ngFor="let setor of setores" [value]="setor.id">{{
+          setor.nome
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div class="status-prioridade">
+  <mat-form-field appearance="outline">
+  <mat-label>Quadra:</mat-label>
+  <input matInput type="text" [(ngModel)]="quadra" name="quadra" />
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Complemento:</mat-label>
+    <input matInput type="text" [(ngModel)]="complemento" name="complemento" />
+    </mat-form-field>
+  </div>
+  
+  <div class="desc">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput name="descricao" [(ngModel)]="descricao" class="custom-textarea"></textarea>
+    </mat-form-field>
+  </div>
+  
+      <div>
+      <mat-form-field class="full-width" appearance="outline">
+    <mat-label for="localCriminalSelect">Selecione o Local Criminal:</mat-label>
+    <mat-select
+      id="localCriminalSelect"
+      [(ngModel)]="tipoLocalSelecionado"
+      (ngModelChange)="tipoLocalSelecionadoChange()"
+    >
+      <mat-option *ngFor="let local of locais" [value]="local.id">
+        {{ local.nomeLocal }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  
+  <div>
+    <p>Selecione os meios empregados:</p>
+    <section class="checkbox-section ">
+      <mat-checkbox (click)="addMeioEmpregadoId(1)" class="margin" color="primary"
+        >AGRESSÃO MORAL</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(2)" class="margin" color="primary"
+        >AMEAÇA</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(3)" class="margin" color="primary"
+        >APROPRIAÇÃO</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(4)" class="margin" color="primary"
+        >ARMA DE CORTE / PERFURACÃO</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(5)" class="margin" color="primary"
+        >ARMA DE FOGO</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(6)" class="margin" color="primary"
+        >ARROMBAMENTO</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(7)"
+        class="margin"
+        color="primary"
+      >
+        ARTEFATO EXPLOSIVO</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(8)" class="margin" color="primary"
+        >CLONAGEM DE DADOS</mat-checkbox
+      >
+      <mat-checkbox (click)="addMeioEmpregadoId(9)" class="margin" color="primary"
+        >CLONAGEM DE PÁGINA</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(10)"
+        class="margin"
+        color="primary"
+        >CORRENTE</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(11)"
+        class="margin"
+        color="primary"
+        >DOCUMENTOS FALSOS</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(12)"
+        class="margin"
+        color="primary"
+        >FIO</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(13)"
+        class="margin"
+        color="primary"
+        >FRAUDE</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(14)"
+        class="margin"
+        color="primary"
+        >OUTROS</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(15)"
+        class="margin"
+        color="primary"
+        >SEGMENTO DE MADEIRA/FERRO</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(16)"
+        class="margin"
+        color="primary"
+        >VIOLÊNCIA FÍSICA</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addMeioEmpregadoId(17)"
+        class="margin"
+        color="primary"
+        >VIOLÊNCIA SEXUAL</mat-checkbox
+      >
+    </section>
+  </div>
+    <div class="botoes">
+                <button  (click)="enviarDadosParaEndpoint()" class="botao mat-elevation-z4" mat-raised-button color="primary">Criar</button>
+                <button routerLink="/home" class="botao mat-elevation-z4" mat-raised-button color="warn">Cancelar</button>
+                </div>
+  </div>
+  
+  
