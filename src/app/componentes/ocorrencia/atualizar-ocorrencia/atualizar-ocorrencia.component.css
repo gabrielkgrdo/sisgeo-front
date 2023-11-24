@@ -41,7 +41,14 @@ h1{
     text-align: center;
 }
 
-.botao {
+.botao1 {
     width: 20%;
     margin: 10px;
+    background-color: rgb(12, 134, 12);
+}
+
+.botao2 {
+    width: 20%;
+    margin: 10px;
+    background-color: rgb(228, 55, 55)
 }
