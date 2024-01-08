@@ -7,8 +7,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao.service';
-
-import * as moment from 'moment';
+import { API_CONFIG } from 'src/app/config/api.config';
 
 
 @Component({
@@ -96,7 +95,7 @@ export class MariaDaPenhaComponent implements OnInit {
 
 
   getTiposLocaisCriminais() {
-    return this.http.get('http://localhost:8080/tipos-locais-criminais');
+    return this.http.get(`${API_CONFIG.baseUrl}/tipos-locais-criminais`);
   }
 
   tipoLocalSelecionadoChange() {
@@ -143,7 +142,7 @@ export class MariaDaPenhaComponent implements OnInit {
     };
   
     // Realize uma solicitação HTTP POST para o endpoint
-    this.http.post('http://localhost:8080/maria-da-penha', dados).subscribe(response => {
+    this.http.post(`${API_CONFIG.baseUrl}/maria-da-penha`, dados).subscribe(response => {
       // Lide com a resposta do servidor, se necessário
       console.log('Resposta do servidor:', response);
       this.toastr.success('Ocorrência criada com sucesso!', 'Sucesso');
@@ -170,7 +169,7 @@ export class MariaDaPenhaComponent implements OnInit {
   buscarSetoresPorCidade(cidadeId: number) {
     // Use o HttpClient para enviar uma solicitação HTTP ao seu back-end
     // Substitua localhost:8080 pelo URL real do seu back-end
-    this.http.get(`http://localhost:8080/setores/cidade/${cidadeId}`).subscribe((response: any[]) => {
+    this.http.get(`${API_CONFIG.baseUrl}/setores/cidade/${cidadeId}`).subscribe((response: any[]) => {
       // Lide com a resposta do back-end (os setores relacionados à cidade selecionada)
       console.log('Setores retornados:', response);
       this.setores = response;
